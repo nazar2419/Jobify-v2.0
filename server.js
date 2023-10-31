@@ -1,3 +1,4 @@
+import "express-async-errors";
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
@@ -7,6 +8,9 @@ import mongoose from "mongoose";
 
 //routers
 import jobRouter from "./routers/jobRouter.js";
+
+// middleware
+import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
