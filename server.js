@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 
 //routers
 import jobRouter from "./routers/jobRouter.js";
-
+import authRouter from "./routers/authRouter.js";
 // middleware
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
@@ -28,6 +28,7 @@ app.post("/api/v1/test", (req, res) => {
   const { name } = req.body;
   res.json({ message: `hello ${name}` });
 });
+app.use("/api/v1/auth", authRouter);
 
 app.use("/api/v1/jobs", jobRouter);
 
@@ -35,10 +36,7 @@ app.use("*", (req, res) => {
   res.status(404).json({ msg: "not found" });
 });
 
-app.use((err, req, res, next) => {
-  console(err);
-  res.status(500).json({ msg: "something went wrong" });
-});
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5100;
 try {
