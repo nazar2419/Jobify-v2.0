@@ -24,10 +24,10 @@ export class UnauthenticatedError extends Error {
   }
 }
 
-export class UnauthorizeddError extends Error {
+export class UnauthorizedError extends Error {
   constructor(message) {
     super(message);
-    this.name = "UnauthorizeddError";
+    this.name = "UnauthorizedError";
     this.statusCode = StatusCodes.FORBIDDEN;
   }
 }
