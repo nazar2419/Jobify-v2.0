@@ -15,14 +15,17 @@ import {
 } from "./pages";
 
 import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+import { loader as dashboardLoaderAction } from "./pages/DashboardLayout";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
   document.body.classList.toggle("dark-theme", isDarkTheme);
   return isDarkTheme;
 };
 
-checkDefaultTheme();
+const isDarkThemeEnabled = checkDefaultTheme();
 
 const router = createBrowserRouter([
   {
@@ -42,10 +45,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "dashboard",
-        element: <DashboardLayout />,
+        element: <DashboardLayout isDarkThemeEnabled={isDarkThemeEnabled} />,
+        loader: dashboardLoaderAction,
         children: [
           {
             index: true,
