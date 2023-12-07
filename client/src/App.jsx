@@ -18,6 +18,7 @@ import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { loader as dashboardLoaderAction } from "./pages/DashboardLayout";
 import { action as addJobAction } from "./pages/AddJob";
+import { loader as allJobsLoader } from "./pages/AllJobs";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const checkDefaultTheme = () => {
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
           {
             path: "all-jobs",
             element: <AllJobs />,
+            loader: allJobsLoader,
           },
           {
             path: "profile",
