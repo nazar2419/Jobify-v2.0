@@ -1,4 +1,4 @@
-import { Form, redirect, useNavigation, Link } from "react-router-dom";
+import { Form, redirect, Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
 import { Logo, FormRow, SubmitBtn } from "../components";
 import customFetch from "../utils/customFetch";
@@ -18,8 +18,6 @@ export const action = async ({ request }) => {
 };
 
 const Register = () => {
-  const navigation = useNavigation();
-
   return (
     <Wrapper>
       <Form method="post" className="form">

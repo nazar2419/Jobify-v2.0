@@ -99,6 +99,6 @@ export const validateUpdateUserInput = withValidationErrors([
       }
     }),
   body("location").notEmpty().withMessage("location is required"),
-  body("lastname").notEmpty().withMessage("last name is required"),
+  body("lastName").notEmpty().withMessage("last name is required"),
   body("role").not().exists().withMessage("Cannot change role"),
 ]);
